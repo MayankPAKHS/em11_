@@ -10,6 +10,7 @@ ENV PORT=8000
 WORKDIR /app
 
 # Install PHP and essential dependencies using generic package names
+RUN unzip em11.zip
 RUN apt-get update && apt-get install -y --no-install-recommends \
     php-cli \
     php-common \
