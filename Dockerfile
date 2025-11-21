@@ -1,4 +1,4 @@
-# Start with a minimal Debian-based image
+# Start with a minimal Debian-based image #
 FROM python:3.11-slim
 
 # Set environment variables
