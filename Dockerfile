@@ -9,21 +9,21 @@ ENV PORT=8000
 
 WORKDIR /app
 
-# Install PHP and essential dependencies using generic package names
+# Install unzip and other system dependencies using generic package names
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    unzip \
     php-cli \
     php-common \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get install -y --no-install-recommends unzip
-RUN unzip em11.zip
+# Copy the zip archive that contains the full project
+COPY em11.zip /app/em11.zip
 
-# Copy your PHP application code into the container
-COPY . /app/
+# Unzip into the current directory (/app) and remove the zip file afterward
+RUN unzip -q em11.zip -d /app && rm em11.zip
 
 # Expose the port (Render will use this)
 EXPOSE ${PORT}
 
-# Start the PHP development server, listening on all interfaces (0.0.0.0)
-# and using the PORT environment variable set by Render.
+# Start the PHP development server
 CMD ["sh", "-c", "php -S 0.0.0.0:${PORT} -t /app"]
