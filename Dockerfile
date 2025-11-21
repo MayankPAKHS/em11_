@@ -1,4 +1,4 @@
-# Use an official PHP image with Apache pre-installed
+## Use an official PHP image with Apache pre-installed
 FROM php:8.3-apache
 
 # Set the working directory to Apache's default document root
