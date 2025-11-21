@@ -12,10 +12,10 @@ WORKDIR /app
 # Install PHP and essential dependencies using generic package names
 RUN apt-get update && apt-get install -y --no-install-recommends \
     php-cli \
-    php-common \
-    unzip
+    php-common
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN apt-get install -y --no-install-recommends unzip
 RUN unzip em11.zip
 
 # Copy your PHP application code into the container
