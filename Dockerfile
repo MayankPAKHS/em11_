@@ -10,11 +10,13 @@ ENV PORT=8000
 WORKDIR /app
 
 # Install PHP and essential dependencies using generic package names
-RUN unzip em11.zip
 RUN apt-get update && apt-get install -y --no-install-recommends \
     php-cli \
     php-common \
+    unzip
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN unzip em11.zip
 
 # Copy your PHP application code into the container
 COPY . /app/
