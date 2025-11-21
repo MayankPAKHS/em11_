@@ -1,4 +1,4 @@
-# Start with a minimal Debian-based image #
+# Start with a minimal Debian-based image
 FROM python:3.11-slim
 
 # Set environment variables
@@ -9,10 +9,10 @@ ENV PORT=8000
 
 WORKDIR /app
 
-# Install PHP and essential dependencies
+# Install PHP and essential dependencies using generic package names
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    php8.2-cli \
-    php8.2-common \
+    php-cli \
+    php-common \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Copy your PHP application code into the container
